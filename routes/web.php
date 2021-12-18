@@ -26,3 +26,13 @@ Route::get('/landing', function() {
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Auth::routes(['verify'=>true]);
+
+Route::group(['prefix'=>'offers'],function(){
+    Route::get('/get','CrudController@getOffers');
+    Route::post('/create','CrudController@createOffer')->name('offer');
+});
+
+Route::get('/offer',function(){
+
+    return view('offers.offer');
+});
